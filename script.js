@@ -467,6 +467,36 @@ function initSmoothScroll() {
     });
 }
 
+// ===== Team Flow Network (scroll reveal) =====
+function initFlowNetwork() {
+    const steps = Array.from(document.querySelectorAll('.flow-step'));
+    if (!steps.length) return;
+
+    function reveal(step) {
+        step.classList.add('revealed');
+        if (step.dataset.line) {
+            document.querySelectorAll(step.dataset.line).forEach(line => line.classList.add('draw'));
+        }
+    }
+
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    reveal(entry.target);
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
+        steps.forEach((step, i) => {
+            if (i === 0) reveal(step);
+            else io.observe(step);
+        });
+    } else {
+        steps.forEach(reveal);
+    }
+}
+
 // ===== Service Cards Tilt Effect =====
 function initTiltEffect() {
     document.querySelectorAll('.service-card, .industry-card').forEach(card => {
@@ -503,4 +533,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initSmoothScroll();
     initTiltEffect();
+    initFlowNetwork();
 });
