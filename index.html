@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagmaTech | Web Development & AI Automation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Site Background Motion Graphics -->
+<div class="site-background" aria-hidden="true">
+    <canvas id="bgCanvas"></canvas>
+    <div class="bg-magma-lines">
+        <div class="magma-line bg-ml1"></div>
+        <div class="magma-line bg-ml2"></div>
+        <div class="magma-line bg-ml3"></div>
+    </div>
+</div>
+<!-- Scroll Lava Stars -->
+<div id="scrollParticles" aria-hidden="true"></div>
+
+<!-- Discount Popup Overlay -->
+<div class="popup-overlay" id="discountPopup">
+    <div class="popup-container">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <div class="popup-particles"></div>
+        <div class="popup-glow"></div>
+        <canvas id="popupFireworks" class="popup-fireworks"></canvas>
+        <div class="popup-badge">SEPTEMBER OFFER</div>
+        <div class="popup-fire-icon"><i class="fas fa-fire"></i></div>
+        <h2 class="popup-title">Exclusive Launch Deal</h2>
+        <div class="popup-discount">
+            <span class="popup-percent">80<span>%</span></span>
+            <span class="popup-off">OFF</span>
+        </div>
+        <p class="popup-desc">Get our complete Web Development & AI Automation package for just $100 this September. Limited time only!</p>
+        <div class="popup-pricing">
+            <span class="old-price">$500</span>
+            <span class="new-price">$100</span>
+        </div>
+        <a href="#contact" class="popup-cta" id="popupCta">Claim This Offer <i class="fas fa-arrow-right"></i></a>
+        <p class="popup-note">No credit card required. Free consultation included.</p>
+    </div>
+</div>
+
+<!-- Floating Social Media Bar -->
+<div class="social-float" id="socialFloat">
+    <a href="https://web.facebook.com/profile.php?id=61594165371909" target="_blank" class="social-link social-fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com" target="_blank" class="social-link social-tw" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.instagram.com/magmatech3/" target="_blank" class="social-link social-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#about" class="social-link social-li" title="View Our LinkedIn Profiles"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://youtube.com" target="_blank" class="social-link social-yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://tiktok.com" target="_blank" class="social-link social-tk" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://github.com" target="_blank" class="social-link social-gh" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://dribbble.com" target="_blank" class="social-link social-dr" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+<a href="#home" class="nav-logo" id="navLogo">
+            <img src="M.png" alt="M" class="nav-logo-m">
+            <img src="text.png" alt="MAGMA TECH" class="nav-logo-text">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item active"><a href="#home" class="nav-link"><span class="nav-link-text">Home</span><span class="nav-link-bg"></span></a></li>
+            <li class="nav-item"><a href="#services" class="nav-link"><span class="nav-link-text">Services</span><span class="nav-link-bg"></span></a></li>
+            <li class="nav-item"><a href="#about" class="nav-link"><span class="nav-link-text">About Us</span><span class="nav-link-bg"></span></a></li>
+            <li class="nav-item"><a href="#portfolio" class="nav-link"><span class="nav-link-text">Portfolio</span><span class="nav-link-bg"></span></a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link nav-cta-link"><span class="nav-link-text">Contact Us</span><span class="nav-link-bg"></span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Home Section -->
+<section class="hero" id="home">
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-magma-lines">
+        <div class="magma-line ml1"></div>
+        <div class="magma-line ml2"></div>
+        <div class="magma-line ml3"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-badge animate-in">
+            <span class="badge-dot"></span>
+            Pioneering the Future of Digital
+        </div>
+        <h1 class="hero-title animate-in">
+            <span class="title-line">We Build</span>
+            <span class="title-line title-gradient">Intelligent</span>
+            <span class="title-line">Digital Experiences</span>
+        </h1>
+        <p class="hero-desc animate-in">
+            MagmaTech fuses cutting-edge web development with AI-powered automation to transform your business. 
+            From sleek, high-performance websites to intelligent workflows that work 24/7 — we engineer 
+            the digital backbone your brand deserves. We don't just code; we architect experiences that 
+            convert, engage, and evolve with your vision.
+        </p>
+        <div class="hero-buttons animate-in">
+            <a href="#services" class="btn btn-primary">
+                <span class="btn-text">Explore Services</span>
+                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                <span class="btn-glow"></span>
+            </a>
+            <a href="#portfolio" class="btn btn-secondary">
+                <span class="btn-text">View Our Work</span>
+                <span class="btn-icon"><i class="fas fa-play"></i></span>
+            </a>
+        </div>
+        <div class="hero-stats animate-in">
+            <div class="stat-item">
+                <span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="98">0</span><span class="stat-plus">%</span>
+                <span class="stat-label">Client Satisfaction</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="12">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Industries Served</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll Down</span>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section services" id="services">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">What We Do</span>
+            <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+            <p class="section-subtitle">End-to-end digital solutions powered by innovation and AI</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Custom-built, responsive websites using React, Next.js, and modern frameworks. Blazing fast, SEO-optimized, and pixel-perfect.</p>
+                <div class="service-tags">
+                    <span>React</span><span>Next.js</span><span>Node.js</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                <h3>AI Automation</h3>
+                <p>Intelligent chatbots, automated workflows, predictive analytics, and ML models that streamline operations and cut costs by 40%.</p>
+                <div class="service-tags">
+                    <span>GPT</span><span>TensorFlow</span><span>N8N</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>App Development</h3>
+                <p>Native and cross-platform mobile applications for iOS and Android that deliver seamless user experiences.</p>
+                <div class="service-tags">
+                    <span>Flutter</span><span>React Native</span><span>Swift</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>User-centered design that captivates. Wireframes, prototypes, and design systems that drive engagement and retention.</p>
+                <div class="service-tags">
+                    <span>Figma</span><span>Adobe XD</span><span>Prototyping</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Digital Marketing</h3>
+                <p>Data-driven SEO, PPC, content marketing, and social media strategies that amplify your brand reach and ROI.</p>
+                <div class="service-tags">
+                    <span>SEO</span><span>PPC</span><span>Analytics</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud & DevOps</h3>
+                <p>AWS, Azure, and GCP infrastructure setup, CI/CD pipelines, and scalable cloud architecture for enterprise-grade reliability.</p>
+                <div class="service-tags">
+                    <span>AWS</span><span>Docker</span><span>Kubernetes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-visual">
+                <div class="about-card-stack">
+                    <div class="about-card ac1">
+                        <i class="fas fa-rocket"></i>
+                        <span>Innovation First</span>
+                    </div>
+                    <div class="about-card ac2">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Enterprise Security</span>
+                    </div>
+                    <div class="about-card ac3">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Agile Process</span>
+                    </div>
+                </div>
+                <div class="about-orbit">
+                    <div class="orbit-ring"></div>
+                    <div class="orbit-dot od1"></div>
+                    <div class="orbit-dot od2"></div>
+                    <div class="orbit-dot od3"></div>
+                </div>
+            </div>
+            <div class="about-content">
+                <span class="section-tag">About MagmaTech</span>
+                <h2 class="section-title">We Engineer <span class="gradient-text">Tomorrow's</span> Digital Landscape</h2>
+                <p class="about-text">
+                    Founded in 2022, MagmaTech emerged from a singular vision: to bridge the gap between 
+                    exceptional design and powerful technology. We are a collective of developers, designers, 
+                    AI engineers, and strategists who believe that technology should work for people — not the 
+                    other way around.
+                </p>
+                <p class="about-text">
+                    Our approach combines human creativity with AI precision. Every project begins with 
+                    deep research, follows an agile methodology, and ends with solutions that don't just meet 
+                    expectations — they shatter them. We've helped startups become unicorns and enterprises 
+                    become digital-first.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <span>24/7 AI-Powered Support</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <span>Transparent Pricing</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <span>Post-Launch Maintenance</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-check"><i class="fas fa-check"></i></div>
+                        <span>100% Source Code Ownership</span>
+                    </div>
+                </div>
+                <div class="about-team">
+                    <h3 class="about-team-title">Connect with Our People <i class="fab fa-linkedin-in"></i></h3>
+                    <div class="about-team-grid">
+                        <a href="https://www.linkedin.com/in/muhammad-farhan-74a080283" target="_blank" class="about-member">
+                            <span class="member-avatar">MF</span>
+                            <span class="member-info">
+                                <strong>Muhammad Farhan</strong>
+                                <em>LinkedIn Profile</em>
+                            </span>
+                            <span class="member-linkedin"><i class="fab fa-linkedin-in"></i></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/yousuf-khan-80589b3a8" target="_blank" class="about-member">
+                            <span class="member-avatar">YK</span>
+                            <span class="member-info">
+                                <strong>Yousuf Khan</strong>
+                                <em>LinkedIn Profile</em>
+                            </span>
+                            <span class="member-linkedin"><i class="fab fa-linkedin-in"></i></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-khubaib-11428b28b" target="_blank" class="about-member">
+                            <span class="member-avatar">MK</span>
+                            <span class="member-info">
+                                <strong>Muhammad Khubaib</strong>
+                                <em>LinkedIn Profile</em>
+                            </span>
+                            <span class="member-linkedin"><i class="fab fa-linkedin-in"></i></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ayaan-ansari-407900431" target="_blank" class="about-member">
+                            <span class="member-avatar">AA</span>
+                            <span class="member-info">
+                                <strong>Ayaan Ansari</strong>
+                                <em>LinkedIn Profile</em>
+                            </span>
+                            <span class="member-linkedin"><i class="fab fa-linkedin-in"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Our Work</span>
+            <h2 class="section-title">Featured <span class="gradient-text">Portfolio</span></h2>
+            <p class="section-subtitle">A showcase of our finest digital creations</p>
+        </div>
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Dev</button>
+            <button class="filter-btn" data-filter="ai">AI Projects</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #ff4500, #ff6b35);">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">E-Commerce</span>
+                    <h3>ShopNova Platform</h3>
+                    <p>Full-stack e-commerce with AI product recommendations</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="ai">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #8b0000, #c0392b);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">AI Automation</span>
+                    <h3>MediAssist AI</h3>
+                    <p>AI chatbot for healthcare patient intake & triage</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #2c3e50, #3498db);">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">Mobile App</span>
+                    <h3>WanderLens Travel</h3>
+                    <p>AI-powered travel planner with AR city tours</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="design">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
+                        <i class="fas fa-home"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">UI/UX Design</span>
+                    <h3>PropVista Real Estate</h3>
+                    <p>Immersive property listing platform with 3D tours</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #1a1a2e, #e94560);">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">Web Development</span>
+                    <h3>TastyBites Platform</h3>
+                    <p>Restaurant chain ordering system with AI menu personalization</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="ai">
+                <div class="portfolio-img">
+                    <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #0d0d0d, #ff4500);">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-cat">AI Analytics</span>
+                    <h3>SalesMind CRM</h3>
+                    <p>AI-driven CRM with predictive lead scoring</p>
+                    <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Section -->
+<section class="section industries" id="industries">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Industries We Serve</span>
+            <h2 class="section-title">Solutions for <span class="gradient-text">Every Sector</span></h2>
+            <p class="section-subtitle">Tailored digital experiences across diverse industries</p>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Healthcare</h3>
+                <p>Telemedicine platforms, patient portals, AI diagnostics, HIPAA-compliant solutions, and electronic health records systems.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> HIPAA Compliant</span>
+                    <span><i class="fas fa-check"></i> AI Diagnostics</span>
+                    <span><i class="fas fa-check"></i> Telemedicine</span>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-building"></i></div>
+                <h3>Real Estate</h3>
+                <p>Property listing platforms, virtual tour integration, CRM systems, and AI-powered property valuation tools.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> Virtual Tours</span>
+                    <span><i class="fas fa-check"></i> AI Valuation</span>
+                    <span><i class="fas fa-check"></i> CRM Integration</span>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-shopping-bag"></i></div>
+                <h3>E-Commerce</h3>
+                <p>Custom storefronts, inventory management, AI recommendation engines, payment gateway integration, and analytics dashboards.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> AI Recommendations</span>
+                    <span><i class="fas fa-check"></i> Multi-Payment</span>
+                    <span><i class="fas fa-check"></i> Analytics</span>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Food & Beverages</h3>
+                <p>Online ordering systems, restaurant management, AI-powered inventory optimization, and delivery tracking solutions.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> Online Ordering</span>
+                    <span><i class="fas fa-check"></i> AI Inventory</span>
+                    <span><i class="fas fa-check"></i> Delivery Tracking</span>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-plane"></i></div>
+                <h3>Travel & Tourism</h3>
+                <p>Booking platforms, itinerary planners, AI travel assistants, review systems, and multi-currency payment solutions.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> AI Travel Assistant</span>
+                    <span><i class="fas fa-check"></i> Booking Engine</span>
+                    <span><i class="fas fa-check"></i> Multi-Currency</span>
+                </div>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Information Technology</h3>
+                <p>SaaS platforms, cloud infrastructure, API development, DevOps automation, and enterprise software solutions.</p>
+                <div class="industry-features">
+                    <span><i class="fas fa-check"></i> SaaS Development</span>
+                    <span><i class="fas fa-check"></i> Cloud Native</span>
+                    <span><i class="fas fa-check"></i> API Systems</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="section blog" id="blog">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Our Blog</span>
+            <h2 class="section-title">Latest <span class="gradient-text">Insights</span></h2>
+            <p class="section-subtitle">Stay updated with the latest in web development and AI</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card blog-featured">
+                <div class="blog-img" style="background: linear-gradient(135deg, #8b0000, #ff4500);">
+                    <span class="blog-badge">Featured</span>
+                    <i class="fas fa-brain blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> Sep 5, 2026</span>
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                    </div>
+                    <h3>How AI is Revolutionizing Web Development in 2026</h3>
+                    <p>From auto-generating code to intelligent testing, discover how artificial intelligence is reshaping the way we build for the web...</p>
+                    <a href="#" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img" style="background: linear-gradient(135deg, #1a1a2e, #e94560);">
+                    <i class="fas fa-cogs blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> Sep 2, 2026</span>
+                        <span><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h3>5 Business Processes You Should Automate Today</h3>
+                    <p>Stop wasting hours on repetitive tasks. Here are five processes ripe for AI automation...</p>
+                    <a href="#" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-img" style="background: linear-gradient(135deg, #2c3e50, #3498db);">
+                    <i class="fas fa-mobile-alt blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> Aug 28, 2026</span>
+                        <span><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <h3>Progressive Web Apps: The Future of Mobile</h3>
+                    <p>Why PWAs are becoming the preferred choice for businesses looking to reach users on every device...</p>
+                    <a href="#" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Let's Build Something <span class="gradient-text">Amazing</span></h2>
+            <p class="section-subtitle">Ready to transform your digital presence? Let's talk.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Visit Us</h4>
+                        <p>123 Tech Boulevard, Suite 400<br>San Francisco, CA 94105</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>hello@techaz.dev<br>support@techaz.dev</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+1 (555) 123-4567<br>Mon - Fri, 9am - 6pm PST</p>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <h4>Follow Us</h4>
+                    <div class="contact-social-links">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-farhan-74a080283" target="_blank" title="Muhammad Farhan"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/in/yousuf-khan-80589b3a8" target="_blank" title="Yousuf Khan"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-khubaib-11428b28b" target="_blank" title="Muhammad Khubaib"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/in/ayaan-ansari-407900431" target="_blank" title="Ayaan Ansari"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://dribbble.com" target="_blank"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <select>
+                        <option value="" disabled selected>Select Service</option>
+                        <option>Web Development</option>
+                        <option>AI Automation</option>
+                        <option>App Development</option>
+                        <option>UI/UX Design</option>
+                        <option>Digital Marketing</option>
+                        <option>Cloud & DevOps</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-letters footer-logo-text">
+                        <span class="logo-l">M</span><span class="logo-l">a</span><span class="logo-l">g</span><span class="logo-l">m</span><span class="logo-l">a</span><span class="logo-l logo-l-t">T</span><span class="logo-l logo-l-t">e</span><span class="logo-l logo-l-t">c</span><span class="logo-l logo-l-t">h</span>
+                    </span>
+                </div>
+                <p>Engineering intelligent digital experiences that transform businesses and delight users.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/muhammad-farhan-74a080283" target="_blank" title="Muhammad Farhan"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/yousuf-khan-80589b3a8" target="_blank" title="Yousuf Khan"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/muhammad-khubaib-11428b28b" target="_blank" title="Muhammad Khubaib"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/ayaan-ansari-407900431" target="_blank" title="Ayaan Ansari"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://dribbble.com" target="_blank"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Web Development</a></li>
+                    <li><a href="#services">AI Automation</a></li>
+                    <li><a href="#services">App Development</a></li>
+                    <li><a href="#services">UI/UX Design</a></li>
+                    <li><a href="#services">Digital Marketing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to our newsletter for the latest insights.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MagmaTech. All rights reserved. Built with <span class="footer-heart">&hearts;</span> and AI.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
