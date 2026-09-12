@@ -537,6 +537,21 @@ function initTiltEffect() {
     });
 }
 
+// ===== Blog Read Article Toggle =====
+function initBlogToggles() {
+    document.querySelectorAll('.blog-read-more').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const body = btn.closest('.blog-card').querySelector('.blog-body');
+            const open = body.classList.toggle('open');
+            btn.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open);
+            btn.innerHTML = open
+                ? 'Close Article <i class="fas fa-arrow-right"></i>'
+                : 'Read Article <i class="fas fa-arrow-right"></i>';
+        });
+    });
+}
+
 // ===== Initialize Everything =====
 document.addEventListener('DOMContentLoaded', () => {
     initPopup();
@@ -553,4 +568,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initTiltEffect();
     initFlowNetwork();
+    initBlogToggles();
 });
