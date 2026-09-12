@@ -468,17 +468,35 @@ function initScrollParticles() {
 
 // ===== Contact Form =====
 function initContactForm() {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('.btn');
         const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<span class="btn-text">Message Sent!</span><span class="btn-icon"><i class="fas fa-check"></i></span>';
-        btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+        const originalBG = btn.style.background;
+
+        const formData = new FormData(contactForm);
+        try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(formData))
+            });
+            const json = await res.json();
+            if (json.success) {
+                btn.innerHTML = '<span class="btn-text">Message Sent!</span><span class="btn-icon"><i class="fas fa-check"></i></span>';
+                btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                contactForm.reset();
+            } else {
+                throw new Error(json.message || 'Send failed');
+            }
+        } catch (err) {
+            btn.innerHTML = '<span class="btn-text">Failed! Try Again</span><span class="btn-icon"><i class="fas fa-exclamation-triangle"></i></span>';
+            btn.style.background = 'linear-gradient(135deg, #c0392b, #e74c3c)';
+        }
 
         setTimeout(() => {
             btn.innerHTML = originalHTML;
-            btn.style.background = '';
-            contactForm.reset();
+            btn.style.background = originalBG;
         }, 3000);
     });
 }
