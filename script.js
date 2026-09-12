@@ -279,6 +279,12 @@ function initNavbar() {
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
         });
+
+        link.addEventListener('mousemove', (e) => {
+            const r = link.getBoundingClientRect();
+            link.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            link.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
     });
 
     // Back to top
@@ -422,21 +428,6 @@ function initScrollParticles() {
     }, { passive: true });
 }
 
-// ===== Navbar Letter Animation =====
-function initNavLetters() {
-    document.querySelectorAll('.nav-link .nav-link-text').forEach(textEl => {
-        const original = textEl.textContent;
-        textEl.textContent = '';
-        [...original].forEach((ch, i) => {
-            const span = document.createElement('span');
-            span.className = 'nav-letter';
-            span.textContent = ch === ' ' ? '\u00A0' : ch;
-            span.style.transitionDelay = (i * 35) + 'ms';
-            textEl.appendChild(span);
-        });
-    });
-}
-
 // ===== Contact Form =====
 function initContactForm() {
     contactForm.addEventListener('submit', (e) => {
@@ -469,31 +460,33 @@ function initSmoothScroll() {
 
 // ===== Team Flow Network (scroll reveal) =====
 function initFlowNetwork() {
+    const hub = document.querySelector('.flow-hub');
     const steps = Array.from(document.querySelectorAll('.flow-step'));
-    if (!steps.length) return;
+    if (!hub || !steps.length) return;
 
-    function reveal(step) {
-        step.classList.add('revealed');
-        if (step.dataset.line) {
-            document.querySelectorAll(step.dataset.line).forEach(line => line.classList.add('draw'));
-        }
+    function revealAll() {
+        steps.forEach((step, i) => {
+            setTimeout(() => {
+                step.classList.add('revealed');
+                if (step.dataset.line) {
+                    document.querySelectorAll(step.dataset.line).forEach(line => line.classList.add('draw'));
+                }
+            }, i * 140);
+        });
     }
 
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    reveal(entry.target);
-                    io.unobserve(entry.target);
+                    revealAll();
+                    io.unobserve(hub);
                 }
             });
-        }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
-        steps.forEach((step, i) => {
-            if (i === 0) reveal(step);
-            else io.observe(step);
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        io.observe(hub);
     } else {
-        steps.forEach(reveal);
+        revealAll();
     }
 }
 
@@ -525,7 +518,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroCanvas();
     initHeroParticles();
     initNavbar();
-    initNavLetters();
     initPortfolioFilter();
     initCounters();
     initScrollReveal();
