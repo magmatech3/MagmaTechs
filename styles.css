@@ -76,7 +76,7 @@ img { max-width: 100%; }
     z-index: 1000;
     padding: 16px 0;
     transform: translateY(0);
-    transition: padding var(--transition), background var(--transition), box-shadow var(--transition), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     background: linear-gradient(180deg, rgba(8,6,6,0.55) 0%, rgba(8,6,6,0) 100%);
 }
 
@@ -285,6 +285,8 @@ img { max-width: 100%; }
 .navbar.nav-hidden {
     transform: translateY(-100%);
     pointer-events: none;
+    transition: padding 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.25s cubic-bezier(0.55, 0, 0.55, 0.2);
+    padding: 8px 0;
 }
 
 .nav-link {
@@ -840,7 +842,7 @@ img { max-width: 100%; }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
