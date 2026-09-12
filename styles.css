@@ -2118,38 +2118,48 @@ img { max-width: 100%; }
     z-index: 1;
 }
 
-.popup-discount {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
+.popup-sale-up {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    margin-bottom: 4px;
     position: relative;
     z-index: 1;
 }
 
-.popup-percent {
+.popup-sale {
     font-family: var(--font-display);
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 11vw, 4.6rem);
     font-weight: 900;
-    background: var(--gradient-lava);
+    line-height: 1.05;
+    background: linear-gradient(90deg, var(--fire-yellow), var(--lava-light), var(--lava), var(--fire-yellow));
+    background-size: 200% auto;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    line-height: 1;
+    -webkit-text-fill-color: transparent;
+    color: var(--lava);
+    animation: saleGradient 3s linear infinite, salePulse 2.2s ease-in-out infinite;
+    margin: 0 0 18px;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
 }
 
-.popup-percent span {
-    font-size: 2.5rem;
+.popup-sale span {
+    display: block;
+    font-size: clamp(1.1rem, 5vw, 1.7rem);
+    letter-spacing: 12px;
 }
 
-.popup-off {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--white);
-    align-self: flex-end;
-    margin-bottom: 8px;
+@keyframes saleGradient {
+    to { background-position: 200% center; }
+}
+
+@keyframes salePulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.35); }
 }
 
 .popup-desc {
@@ -2161,24 +2171,9 @@ img { max-width: 100%; }
     z-index: 1;
 }
 
-.popup-pricing {
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: var(--ash);
-    font-size: 1.2rem;
-    margin-right: 12px;
-}
-
-.new-price {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
+.popup-desc strong {
+    color: var(--fire-yellow);
     font-weight: 700;
-    color: var(--lava);
 }
 
 .popup-cta {
@@ -2258,16 +2253,16 @@ html, body {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .about-features { grid-template-columns: 1fr; }
-    .flow-hub { flex-direction: column; gap: 0; }
-    .flow-mid { order: 2; flex: 0 0 auto; margin: 14px 0; }
-    .flow-logo-wrap { width: 130px; height: 130px; margin: 0 auto; }
-    .flow-side { position: relative; width: 100%; gap: 0; justify-content: flex-start; flex: 0 0 auto; }
-    .flow-side::before {
+    .flow-hub { flex-direction: column; gap: 0; position: relative; }
+    .flow-mid { display: none; }
+    .flow-side { width: 100%; gap: 0; justify-content: flex-start; flex: 0 0 auto; }
+    .flow-side::before { display: none; }
+    .flow-hub::before {
         content: '';
         position: absolute;
         left: 50%;
-        top: 6px;
-        bottom: 6px;
+        top: 10px;
+        bottom: 10px;
         width: 6px;
         transform: translateX(-50%);
         border-radius: 3px;
@@ -2312,8 +2307,8 @@ html, body {
         overflow-y: auto;
     }
     .popup-title { font-size: 1.25rem; }
-    .popup-percent { font-size: 3rem; }
-    .popup-off { font-size: 1.4rem; }
+    .popup-sale { font-size: clamp(2.6rem, 12vw, 3.4rem); }
+    .popup-sale span { letter-spacing: 8px; }
     .popup-desc { font-size: 0.85rem; }
     .popup-fire-icon { font-size: 2rem; margin-bottom: 12px; }
     .popup-cta { font-size: 0.95rem; padding: 14px 20px; }

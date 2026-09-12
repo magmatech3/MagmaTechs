@@ -110,7 +110,7 @@ function initPopupFireworks() {
 function initHeroCanvas() {
     const ctx = bgCanvas.getContext('2d');
     let width, height, particles = [], mouse = { x: null, y: null };
-    const PARTICLE_COUNT = 125;
+    let isMobile = window.innerWidth <= 768;
     const MAX_DIST = 170;
     const MOUSE_RADIUS = 200;
 
@@ -185,19 +185,21 @@ function initHeroCanvas() {
     function init() {
         resize();
         particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const count = isMobile ? 42 : 125;
+        for (let i = 0; i < count; i++) {
             particles.push(new Node(true));
         }
     }
 
     function drawConnections() {
+        const maxDist = isMobile ? 105 : MAX_DIST;
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < MAX_DIST) {
-                    const t = 1 - dist / MAX_DIST;
+                if (dist < maxDist) {
+                    const t = 1 - dist / maxDist;
                     const opacity = t * 0.3;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -227,7 +229,14 @@ function initHeroCanvas() {
         mouse.y = null;
     });
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', () => {
+        const next = window.innerWidth <= 768;
+        resize();
+        if (next !== isMobile) {
+            isMobile = next;
+            init();
+        }
+    });
     init();
     animate();
 }
@@ -397,22 +406,24 @@ function initScrollParticles() {
     let lastSpawn = 0;
 
     window.addEventListener('scroll', () => {
+        const isMobile = window.innerWidth <= 768;
         const currentY = window.scrollY;
         const now = Date.now();
         const delta = currentY - lastScrollY;
         lastScrollY = currentY;
 
-        if (delta <= 0 || now - lastSpawn < 220) return;
+        if (delta <= 0 || now - lastSpawn < (isMobile ? 550 : 220)) return;
         lastSpawn = now;
 
         const speed = Math.min(delta, 40);
-        const count = Math.max(1, Math.floor(speed / 18));
+        const count = isMobile ? (Math.random() < 0.4 ? 1 : 0) : Math.max(1, Math.floor(speed / 18));
+        if (!count) return;
 
         for (let i = 0; i < count; i++) {
             const star = document.createElement('div');
             star.className = 'lava-star';
-            const w = (Math.random() * 1.5 + 2) + 'px';
-            const len = (Math.random() * 50 + 60) + 'px';
+            const w = (Math.random() * (isMobile ? 0.9 : 1.5) + (isMobile ? 1.2 : 2)) + 'px';
+            const len = (isMobile ? Math.random() * 28 + 34 : Math.random() * 50 + 60) + 'px';
             star.style.width = w;
             star.style.height = len;
             star.style.left = (Math.random() * 100) + 'vw';
