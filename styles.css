@@ -2234,6 +2234,10 @@ img { max-width: 100%; }
     color: var(--white);
 }
 
+.form-group select option[value=""] {
+    color: rgba(255, 255, 255, 0.55);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
