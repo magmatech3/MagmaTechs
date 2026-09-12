@@ -468,6 +468,13 @@ function initScrollParticles() {
 
 // ===== Contact Form =====
 function initContactForm() {
+    const serviceSelect = contactForm.querySelector('select[name="service"]');
+    if (serviceSelect) {
+        serviceSelect.addEventListener('change', () => {
+            serviceSelect.classList.toggle('filled', !!serviceSelect.value);
+        });
+    }
+
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('.btn');
