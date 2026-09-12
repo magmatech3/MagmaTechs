@@ -2778,6 +2778,19 @@ html, body {
     .package-card.featured { transform: none; }
     .package-card.featured:hover { transform: translateY(-10px); }
     .package-new { font-size: 2.2rem; }
+    .category-head { gap: 10px; }
+    .category-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        background: linear-gradient(135deg, #ffffff, var(--fire-yellow), var(--fire-orange), var(--lava));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        filter: drop-shadow(0 2px 8px rgba(255, 69, 0, 0.45));
+    }
     .hero-stats { gap: 24px; }
     .stat-divider { display: none; }
     .social-float { display: none; }
