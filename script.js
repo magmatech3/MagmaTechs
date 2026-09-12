@@ -258,15 +258,27 @@ function initHeroParticles() {
 // ===== Navbar =====
 function initNavbar() {
     // Scroll effect
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        const currentY = window.scrollY;
+        const menuOpen = navMenu.classList.contains('active');
+
+        if (currentY > 90 && currentY > lastScrollY && !menuOpen) {
+            navbar.classList.add('nav-hidden');
+        } else if (currentY < lastScrollY || currentY <= 90 || menuOpen) {
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentY;
+
+        if (currentY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
         // Back to top
-        if (window.scrollY > 400) {
+        if (currentY > 400) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
