@@ -400,6 +400,21 @@ function initScrollReveal() {
     });
 }
 
+// ===== Packages Cards Reveal =====
+function initPackagesReveal() {
+    document.querySelectorAll('.packages-grid').forEach(grid => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    grid.classList.add('visible');
+                    observer.unobserve(grid);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        observer.observe(grid);
+    });
+}
+
 // ===== Bright Shooting Stars on Scroll =====
 function initScrollParticles() {
     let lastScrollY = window.scrollY;
@@ -532,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolioFilter();
     initCounters();
     initScrollReveal();
+    initPackagesReveal();
     initScrollParticles();
     initContactForm();
     initSmoothScroll();
