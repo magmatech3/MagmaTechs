@@ -1642,25 +1642,19 @@ img { max-width: 100%; }
     background: linear-gradient(135deg, var(--magma), var(--ember));
     border: none;
     cursor: pointer;
-    transition: transform .3s, box-shadow .3s;
+    transition: transform .3s, box-shadow .3s, background .3s, filter .3s;
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
-.package-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+.package-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255,69,0,0.40);
     background: linear-gradient(135deg, var(--lava), var(--fire-orange), var(--ember));
-    opacity: 0;
-    transition: opacity .35s;
-    border-radius: inherit;
-    z-index: 1;
+    filter: brightness(1.1);
 }
-.package-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,69,0,0.40); }
-.package-cta:hover::before { opacity: 1; }
-.package-cta .pkg-cta-label { position: relative; z-index: 2; }
-.package-cta i { position: relative; z-index: 2; transition: transform .3s; }
+.package-cta .pkg-cta-label { position: relative; }
+.package-cta i { position: relative; transition: transform .3s; }
 .package-cta:hover i { transform: translateX(4px); }
 
 /* ---- Featured card ---- */
