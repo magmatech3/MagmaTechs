@@ -954,7 +954,7 @@ img { max-width: 100%; }
 .about-card-stack {
     position: relative;
     width: 280px;
-    height: 280px;
+    height: 340px;
 }
 
 .about-card {
@@ -979,8 +979,8 @@ img { max-width: 100%; }
 }
 
 .ac1 { top: 0; left: 20px; animation-delay: 0s; }
-.ac2 { top: 80px; left: 60px; animation-delay: 2s; }
-.ac3 { top: 160px; left: 10px; animation-delay: 4s; }
+.ac2 { top: 135px; left: 60px; animation-delay: 2s; }
+.ac3 { top: 270px; left: 10px; animation-delay: 4s; }
 
 @keyframes cardFloat {
     0%, 100% { transform: translateY(0); }
@@ -1655,10 +1655,12 @@ img { max-width: 100%; }
     opacity: 0;
     transition: opacity .35s;
     border-radius: inherit;
+    z-index: 1;
 }
 .package-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,69,0,0.40); }
 .package-cta:hover::before { opacity: 1; }
-.package-cta i { position: relative; z-index: 1; transition: transform .3s; }
+.package-cta .pkg-cta-label { position: relative; z-index: 2; }
+.package-cta i { position: relative; z-index: 2; transition: transform .3s; }
 .package-cta:hover i { transform: translateX(4px); }
 
 /* ---- Featured card ---- */
@@ -2220,7 +2222,7 @@ img { max-width: 100%; }
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff4500' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.42);
     cursor: pointer;
 }
 
@@ -2235,7 +2237,7 @@ img { max-width: 100%; }
 }
 
 .form-group select option[value=""] {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.42);
 }
 
 .form-group textarea {
